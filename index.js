@@ -1,50 +1,52 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const app = express();
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
 
-// Simulating a database with a array, it's just a sample
-const array = [{
-  first_name: 'Alefe',
-  last_name: 'Souza',
-  age: 21
+var usuarios = [{
+    nome: "Alefe",
+    sobrenome: "Souza",
+    idade: 21
 }, {
-  first_name: 'Rodrigo',
-  last_name: 'Cardoso',
-  age: 31
+    nome: "Rodrigo",
+    sobrenome: "Cardoso",
+    idade: 31
 }];
 
 app.use(bodyParser.json());
+
 app.use('/', express.static('public'));
 
-app.get('/api/users', (req, res) => {
-  /// Status 200 by default
-  res.send(array);
+app.get('/api/users', function(req, res) {
+    res.send(usuarios);
 });
 
-app.get('/api/users/:index', (req, res) => {
-  res.send(array[req.params.index]);
+app.get('/api/users/:index', function(req, res) {
+    var usuario = usuarios[req.params.index];
+
+    res.send(usuario);
 });
 
-app.post('/api/users', (req, res) => {
-  res.status(201);
+app.post('/api/users', function(req, res) {
+    var conteudo = req.body;
 
-  array.push(req.body);
-  res.send(req.body);
+    usuarios.push(conteudo);
+    res.status(201);
+    res.send(conteudo);
 });
 
-app.put('/api/users/:index', (req, res) => {
-  array[req.params.index] = req.body;
+app.put('/api/users/:index', function(req, res) {
+    usuarios[req.params.index] = req.body;
 
-  res.send(req.body);
+    res.send(req.body);
 });
 
-app.delete('/api/users/:index', (req, res) => {
-  array.splice(req.params.index, 1);
+app.delete('/api/users/:index', function(req, res) {
+    usuarios.splice(req.params.index, 1);
 
-  res.status(204);
-  res.send(null);
+    res.status(204);
+    res.send(null);
 });
 
-app.listen(3000, () => {
-  console.log('App running on http://localhost:3000');
+app.listen(3000, function() {
+    console.log('App rodando em http://localhost:3000')
 });

@@ -1,24 +1,14 @@
 {
-  "name": "talk-web-apis-from-scratch",
+  "name": "web-api",
   "version": "1.0.0",
-  "description": "Code from my Web APIs from Scratch talk",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alefesouza/talk-web-apis-from-scratch.git"
-  },
-  "keywords": [
-    "api"
-  ],
-  "author": "Alefe Souza <contact@alefesouza.com>",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alefesouza/talk-web-apis-from-scratch/issues"
-  },
-  "homepage": "https://github.com/alefesouza/talk-web-apis-from-scratch#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3"
